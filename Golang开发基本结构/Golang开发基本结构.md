@@ -6,14 +6,14 @@
 
 方法二.直接go run执行，经过底层编译
 
-![001](D:\Golang_Notes\Golang开发基本结构\001.png)
+![001](001.png)
 
 两种方法区别:
 
-![002](D:\Golang_Notes\Golang开发基本结构\002.png)
+![002](002.png)
 
 二、指定编译文件名(shift+alt+下箭头是快速复制)
 
 go build -o 指定编译文件名 被编译文件
 
-![003](D:\Golang_Notes\Golang开发基本结构\003.png)
+![003](003.png)
