@@ -4,11 +4,11 @@
 
 二、Golang代码规范:
 
-![002](D:\Golang_Notes\Golang开发注意事项\002.png)
+![002](002.png)
 
 gofmt相关注意事项
 
-![003](D:\Golang_Notes\Golang开发注意事项\003.png)
+![003](003.png)
 
 注:一行不能超过80个字符
 
