@@ -46,7 +46,7 @@
 
 三、字符型
 
-![009](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\009.png)
+![009](009.png)
 
 注:
 
@@ -68,7 +68,7 @@
 
 六、基本数据类型默认值
 
-![010](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\010.png)
+![010](010.png)
 
 七、数据类型转换
 
@@ -76,9 +76,9 @@
 
 1.基本数据类型相互转换
 
-![011](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\011.png)
+![011](011.png)
 
-![012](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\012.png)
+![012](012.png)
 
 ![013](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\013.png)
 
