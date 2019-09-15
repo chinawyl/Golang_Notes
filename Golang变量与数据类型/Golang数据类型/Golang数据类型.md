@@ -1,6 +1,6 @@
 一、数据类型概要
 
-![001](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\001.png)
+![001](001.png)
 
 注:
 
@@ -12,15 +12,15 @@
 
 1.有符号
 
-![002](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\002.png)
+![002](002.png)
 
 2.无符号
 
-![003](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\003.png)
+![003](003.png)
 
 3.特殊
 
-![004](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\004.png)
+![004](004.png)
 
 注:rune处理中文
 
