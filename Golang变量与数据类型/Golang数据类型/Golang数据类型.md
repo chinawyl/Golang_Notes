@@ -26,21 +26,21 @@
 
 4.查看数据类型(Printf)和字节数(Sizeof，注意导包)
 
-![005](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\005.png)
+![005](005.png)
 
 二、浮点数类型
 
 1.基本类型
 
-![006](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\006.png)
+![006](006.png)
 
 2.浮点类型精度表示
 
-![007](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\007.png)
+![007](007.png)
 
 3.浮点型使用细节
 
-![008](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\008.png)
+![008](008.png)
 
 注:没有OS即没有float，e后面跟负数相当于除
 
