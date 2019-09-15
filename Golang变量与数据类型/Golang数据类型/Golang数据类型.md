@@ -80,24 +80,24 @@
 
 ![012](012.png)
 
-![013](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\013.png)
+![013](013.png)
 
 2.基本数据类型转string类型
 
 方式一
 
-![014](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\014.png)方式二
+![014](014.png)方式二
 
-![015](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\015.png)
+![015](015.png)
 
-![016](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\016.png)
+![016](016.png)
 
 注意导入strconv包
 
 3.string转基本数据类型
 
-![017](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\017.png)
+![017](017.png)
 
-![018](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\018.png)
+![018](018.png)
 
 注:如果将"hello"转换整数，结果为0，请注意转换有效性
