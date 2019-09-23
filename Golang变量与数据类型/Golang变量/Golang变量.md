@@ -18,9 +18,9 @@ b.变量能在当前区域的同一类型范围内变化
 
 4.标识符
 
-![004](D:\Golang_Notes\Golang变量与数据类型\Golang变量\004.png)
+![004](004.png)
 
-![005](D:\Golang_Notes\Golang变量与数据类型\Golang变量\005.png)
+![005](005.png)
 
 注:
 
@@ -28,15 +28,15 @@ int和float32可以作为标识符，但禁止使用
 
 golang还有36个预定义标识符
 
-![006](D:\Golang_Notes\Golang变量与数据类型\Golang变量\006.png)
+![006](006.png)
 
 5.标识符命名注意事项
 
-![007](D:\Golang_Notes\Golang变量与数据类型\Golang变量\007.png)
+![007](007.png)
 
 注:最后大写引用要导入包
 
-![008](D:\Golang_Notes\Golang变量与数据类型\Golang变量\008.png)
+![008](008.png)
 
-![009](D:\Golang_Notes\Golang变量与数据类型\Golang变量\009.png)
+![009](009.png)
 
