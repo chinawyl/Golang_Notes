@@ -25,5 +25,5 @@
 调用fmt的Scanln和Scanlf
 ```
 
-![001](D:\Golang_Notes\Golang基本语法\001.png)
+![001](001.png)
 
