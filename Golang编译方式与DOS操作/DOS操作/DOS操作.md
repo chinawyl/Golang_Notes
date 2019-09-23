@@ -22,7 +22,7 @@
 
 例:echo abc > d:\Test\test1\abc.txt
 
-2.复制文件
+2.复制文件 
 
 copy 被拷贝文件 拷贝路径(可在最后指定名字)
 

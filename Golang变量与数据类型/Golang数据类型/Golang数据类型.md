@@ -94,10 +94,10 @@
 
 注意导入strconv包
 
-3.string转基本数据类型
+3.string转基本数据类型(注意导入strconv包)
 
 ![017](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\017.png)
 
 ![018](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\018.png)
 
-注:如果将"hello"转换整数，结果为0，请注意转换有效性
+注:如果将"hello"转换整数，结果为0即默认值，请注意转换有效性
