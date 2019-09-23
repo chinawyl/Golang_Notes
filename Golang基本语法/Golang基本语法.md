@@ -19,3 +19,11 @@
 		*/
 ```
 
+三、获取用户终端输入
+
+```go
+调用fmt的Scanln和Scanlf
+```
+
+![001](D:\Golang_Notes\Golang基本语法\001.png)
+
