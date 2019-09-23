@@ -1,17 +1,42 @@
 1.变量使用方式
 
-![001](D:\Golang_Notes\Golang变量与数据类型\Golang变量\001.png)
+![001](001.png)
 
 2.声明多个变量
 
-![002](D:\Golang_Notes\Golang变量与数据类型\Golang变量\002.png)
+![002](002.png)
 
 3.声明全局变量
 
-![003](D:\Golang_Notes\Golang变量与数据类型\Golang变量\003.png)
+![003](003.png)
 
 注:
 
 a.Golang变量没有赋初值，int默认为0，小数默认为0，string默认为空串
 
 b.变量能在当前区域的同一类型范围内变化
+
+4.标识符
+
+![004](D:\Golang_Notes\Golang变量与数据类型\Golang变量\004.png)
+
+![005](D:\Golang_Notes\Golang变量与数据类型\Golang变量\005.png)
+
+注:
+
+int和float32可以作为标识符，但禁止使用
+
+golang还有36个预定义标识符
+
+![006](D:\Golang_Notes\Golang变量与数据类型\Golang变量\006.png)
+
+5.标识符命名注意事项
+
+![007](D:\Golang_Notes\Golang变量与数据类型\Golang变量\007.png)
+
+注:最后大写引用要导入包
+
+![008](D:\Golang_Notes\Golang变量与数据类型\Golang变量\008.png)
+
+![009](D:\Golang_Notes\Golang变量与数据类型\Golang变量\009.png)
+
