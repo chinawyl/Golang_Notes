@@ -1,12 +1,12 @@
 一、单分支
 
-![001](D:\Golang_Notes\Golang流程控制\001.png)
+![001](001.png)
 
-![002](D:\Golang_Notes\Golang流程控制\002.png)
+![002](002.png)
 
 二、双分支
 
-![003](D:\Golang_Notes\Golang流程控制\003.png)
+![003](003.png)
 
 注:
 
@@ -20,6 +20,6 @@
 
 示例:
 
-![004](D:\Golang_Notes\Golang流程控制\004.png)
+![004](004.png)
 
 注意导入math包
