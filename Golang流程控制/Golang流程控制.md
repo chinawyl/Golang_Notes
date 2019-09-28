@@ -1,12 +1,12 @@
 一、单分支
 
-![001](D:\Golang_Notes\Golang流程控制\001.png)
+![001](001.png)
 
-![002](D:\Golang_Notes\Golang流程控制\002.png)
+![002](002.png)
 
 二、双分支
 
-![003](D:\Golang_Notes\Golang流程控制\003.png)
+![003](003.png)
 
 注:
 
@@ -20,9 +20,10 @@
 
 示例:
 
-![004](D:\Golang_Notes\Golang流程控制\004.png)
+![004](004.png)
 
 注意导入math包
+<<<<<<< HEAD
 
 三、switch
 
@@ -75,4 +76,20 @@
 10)判断interface中变量实际指向的变量类型
 
 ![018](D:\Golang_Notes\Golang流程控制\018.png)
+
+四、for循环
+
+1.for循环的三种写法
+
+![019](D:\Golang_Notes\Golang流程控制\019.png)
+
+2.for循环遍历字符串
+
+![020](D:\Golang_Notes\Golang流程控制\020.png)
+
+3.练习
+
+![021](D:\Golang_Notes\Golang流程控制\021.png)
+
+![022](D:\Golang_Notes\Golang流程控制\022.png)
 
