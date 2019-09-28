@@ -81,15 +81,15 @@
 
 1.for循环的三种写法
 
-![019](D:\Golang_Notes\Golang流程控制\019.png)
+![019](019.png)
 
 2.for循环遍历字符串
 
-![020](D:\Golang_Notes\Golang流程控制\020.png)
+![020](020.png)
 
 3.练习
 
-![021](D:\Golang_Notes\Golang流程控制\021.png)
+![021](021.png)
 
-![022](D:\Golang_Notes\Golang流程控制\022.png)
+![022](022.png)
 
