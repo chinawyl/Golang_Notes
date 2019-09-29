@@ -93,3 +93,27 @@
 
 ![022](D:\Golang_Notes\Golang流程控制\022.png)
 
+五、while和do while
+
+golang中没有while和do while，可以用for循环代替
+
+![023](D:\Golang_Notes\Golang流程控制\023.png)
+
+![024](D:\Golang_Notes\Golang流程控制\024.png)
+
+六、经典练习
+
+1.打印空心金字塔
+
+![025](D:\Golang_Notes\Golang流程控制\025.png)
+
+![026](D:\Golang_Notes\Golang流程控制\026.png)
+
+2.统计3个班，每个班5名同学，求出各个班平均分，所有班级平均分，所有班级及格人数
+
+![027](D:\Golang_Notes\Golang流程控制\027.png)
+
+3.打印九九乘法表
+
+![028](D:\Golang_Notes\Golang流程控制\028.png)
+
