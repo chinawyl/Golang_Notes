@@ -117,3 +117,41 @@ golang中没有while和do while，可以用for循环代替
 
 ![028](D:\Golang_Notes\Golang流程控制\028.png)
 
+七、break
+
+1.练习
+
+![029](D:\Golang_Notes\Golang流程控制\029.png)
+
+2.标签指明终止层数
+
+![030](D:\Golang_Notes\Golang流程控制\030.png)
+
+![031](D:\Golang_Notes\Golang流程控制\031.png)
+
+注:不使用标签就是就近原则
+
+八、continue
+
+1.练习
+
+![032](D:\Golang_Notes\Golang流程控制\032.png)
+
+![033](D:\Golang_Notes\Golang流程控制\033.png)
+
+2.break和continue综合练习
+
+![034](D:\Golang_Notes\Golang流程控制\034.png)
+
+九、goto
+
+![035](D:\Golang_Notes\Golang流程控制\035.png)
+
+![036](D:\Golang_Notes\Golang流程控制\036.png)
+
+打印结果为:OK1 OK2 OK3
+
+十、return(跳出所在方法或函数)
+
+![037](D:\Golang_Notes\Golang流程控制\037.png)
+
