@@ -16,7 +16,7 @@ go buid -o xxx.exe //代码包中有且仅有一个命令源码文件且在文�
 .\xxx.exe //直接xxx.exe就行，但个人情况特殊
 ```
 
-![001](D:\Golang_Notes\Golang编译操作与DOS操作\Golang编译方式\001.png)
+![001](001.png)
 
 四、直接执行源代码(不编译)
 
