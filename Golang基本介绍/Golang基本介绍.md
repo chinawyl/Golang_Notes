@@ -16,18 +16,18 @@
 
 三、go语言核心开发团队
 
-![001](D:\Golang_Notes\Golang基本介绍\001.png)
+![001](001.png)
 
 四、go语言特点
 
-![002](D:\Golang_Notes\Golang基本介绍\002.png)
+![002](002.png)
 
 五、性能比较
 
 
 
-![003](D:\Golang_Notes\Golang基本介绍\003.png)
+![003](003.png)
 
 六、使用go语言公司
 
-![004](D:\Golang_Notes\Golang基本介绍\004.png)
+![004](004.png)
