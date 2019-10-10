@@ -2,11 +2,11 @@
 
 1.关键字(25个)
 
-![001](D:\Golang_Notes\Golang变量与数据类型\Golang变量\001.png)
+![001](001.png)
 
 2.保留字(37个)
 
-![002](D:\Golang_Notes\Golang变量与数据类型\Golang变量\002.png)
+![002](002.png)
 
 二、变量的声明
 
