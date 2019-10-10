@@ -6,11 +6,11 @@
 
 1.整型
 
-![002](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\002.png)
+![002](002.png)
 
 2.其他数字类型
 
-![003](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\003.png)
+![003](003.png)
 
 注:
 
@@ -20,7 +20,7 @@ b.在写二进制文件时不要使用int和uint
 
 三、浮点数类型
 
-![004](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\004.png)
+![004](004.png)
 
 注:
 
@@ -84,7 +84,7 @@ func main(){
 
 2.转义
 
-![005](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\005.png)
+![005](005.png)
 
 3.使用反引号``，输出大批代码，不用转义
 
@@ -92,7 +92,7 @@ func main(){
 
 5.字符串常用操作
 
-![006](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\006.png)
+![006](\006.png)
 
 七、复数
 
