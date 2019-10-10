@@ -43,3 +43,10 @@ go build
 SET GOOS=windows //改成windows
 ```
 
+七、格式化程序
+
+```go
+go fmt xxx.go
+```
+
+注:保存时会自动调用
