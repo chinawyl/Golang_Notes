@@ -1,6 +1,6 @@
 一、算术运算符
 
-![001](D:\Golang_Notes\Golang运算符与进制转换\Golang运算符\001.png)
+![001](001.png)
 
 注:
 
@@ -42,11 +42,11 @@ fmt.Println(-10 % -3) //-1
 
 二、关系运算符
 
-![002](D:\Golang_Notes\Golang运算符与进制转换\Golang运算符\002.png)
+![002](002.png)
 
 三、逻辑运算符
 
-![003](D:\Golang_Notes\Golang运算符与进制转换\Golang运算符\003.png)
+![003](003.png)
 
 注:
 
@@ -56,13 +56,13 @@ b.||也叫短路或，||的第一个条件为true，则第二个条件不会判�
 
 四、位运算符
 
-![004](D:\Golang_Notes\Golang运算符与进制转换\Golang运算符\004.png)
+![004](004.png)
 
 注:位运算都是补码运算
 
 五、赋值运算符
 
-![005](D:\Golang_Notes\Golang运算符与进制转换\Golang运算符\005.png)
+![005](005.png)
 
 练习:不用中间变量把a,b值互换
 
@@ -79,10 +79,10 @@ fmt.Printf("a=%v b=%v",a ,b) //a=20,b=10
 
 六、其他运算符
 
-![006](D:\Golang_Notes\Golang运算符与进制转换\Golang运算符\006.png)
+![006](006.png)
 
 注:golang中没有三元运算符
 
 七、运算符优先级
 
-![007](D:\Golang_Notes\Golang运算符与进制转换\Golang运算符\007.png)
+![007](007.png)
