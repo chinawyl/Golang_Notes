@@ -92,15 +92,19 @@ func main(){
 
 5.字符串常用操作
 
-![006](\006.png)
+![006](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\006.png)
 
 七、复数
 
 complex64和complex128
 
 ```go
-var c1 complex64 = 1 + 2i
-var c2 complex128 = 2 + 3i
+var c1 complex64 = 1 + 2i //使用两个float32数作为实部和虚部
+var c2 complex128 = 2 + 3i //使用两个float64数作为实部和虚部
+
+var number = complex(3.14,-1)
+var b = imag(number) //实部
+var c = real(number) //虚部
 ```
 
 八、基本数据类型默认值
