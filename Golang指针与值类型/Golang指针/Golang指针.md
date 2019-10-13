@@ -26,7 +26,7 @@ func main() {
 }
 ```
 
-![001](D:\Golang_Notes\Golang指针与值类型\Golang指针\001.png)
+![001](001.png)
 
 二、指针使用细节
 
