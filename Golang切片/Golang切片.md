@@ -44,7 +44,7 @@ func main() {
 }
 ```
 
-![001](D:\Golang_Notes\Golang切片\001.png)
+![001](001.png)
 
 二、切片的比较
 
