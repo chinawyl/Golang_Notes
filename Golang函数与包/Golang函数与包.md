@@ -123,6 +123,64 @@ end ...
 
 Go语言中的`defer`语句会将其后面跟随的语句进行延迟处理。在`defer`归属的函数即将返回时，将延迟处理的语句按`defer`定义的逆序进行执行，也就是说，先被`defer`的语句最后被执行，最后被`defer`的语句，最先被执行
 
+二、变量作用域
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+var num = 10 //全局变量
+
+func pln() {
+	//先在自己函数中找，找到了就用自己的
+	//没有找到就往外层找全局变量
+	num := 100 //局部变量
+	fmt.Println("变量num =", num)
+}
+
+func main() {
+	pln() //变量num = 100
+
+	abc := pln              //函数可以作为变量
+	fmt.Printf("%T\n", abc) //返回的类型是func()
+	abc()                   //直接调用
+}
+```
+
+注:for循环的i也是局部变量
+
+三、函数作为参数
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func add(x, y int) int {
+	return x + y
+}
+
+func sub(x, y int) int {
+	return x - y
+}
+
+func cal(x, y int, op func(int, int) int) int {
+	return op(x, y)
+}
+
+func main() {
+	r1 := cal(100, 200, add)
+	fmt.Println(r1)
+	r2 := cal(100, 200, sub)
+	fmt.Println(r2)
+}
+```
+
 二、包的使用
 
 ![003](003.png)
