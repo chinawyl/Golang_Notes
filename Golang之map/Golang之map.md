@@ -161,13 +161,12 @@ import (
 )
 
 func main() {
-	var mapSlice = make([]map[string]string, 3)
+	var mapSlice = make([]map[string]string, 3) //对切片初始化
 	for index, value := range mapSlice {
 		fmt.Printf("index:%d value:%v\n", index, value)
 	}
 	fmt.Println("after init")
-	// 对切片中的map元素进行初始化
-	mapSlice[0] = make(map[string]string, 10)
+	mapSlice[0] = make(map[string]string, 10) //对切片中的map元素进行初始化
 	mapSlice[0]["name"] = "小王子"
 	mapSlice[0]["password"] = "123456"
 	mapSlice[0]["address"] = "沙河"
@@ -187,17 +186,46 @@ import (
 )
 
 func main() {
-	var sliceMap = make(map[string][]string, 3)
+	var sliceMap = make(map[string][]string, 3) //map初始化
 	fmt.Println(sliceMap)
 	fmt.Println("after init")
 	key := "中国"
 	value, ok := sliceMap[key]
 	if !ok {
-		value = make([]string, 0, 2)
+		value = make([]string, 0, 2) //切片初始化
 	}
 	value = append(value, "北京", "上海")
 	sliceMap[key] = value
 	fmt.Println(sliceMap)
+}
+```
+
+六、练习:统计一个字符串中每个单词出现的次数，比如：”how do you do”中how=1 do=2 you=1
+
+```go
+package main
+
+import(
+	"fmt"
+	"strings"
+)
+
+func main() {
+	var s = "How do you do"
+	var wordCount = make(map[string]int, 10)
+	words := strings.Split(s, " ")
+	for _, word := range words {
+		v, ok := wordCount[word]
+		if ok {
+			wordCount[word] = v + 1
+		} else {
+			wordCount[word] = 1
+		}
+	}
+
+	for k, v := range wordCount {
+		fmt.Println(k, v)
+	}
 }
 ```
 

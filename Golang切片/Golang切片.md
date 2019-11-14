@@ -23,7 +23,7 @@ func main() {
 	//基于数组得到切片
 	array := [5]int{5, 6, 7, 8, 9}
 	array1 := array[1:4]
-	fmt.Println(array1)
+	fmt.Println(array1) //[56 57 58]
 	fmt.Printf("%T\n", array1)
 
 	//切片再次切片

@@ -376,8 +376,6 @@ for i := 1; i <= 3; i++ {
 
 九、goto
 
-![035](035.png)
-
 ```go
 n := 30
 fmt.Println("OK1")
@@ -404,4 +402,3 @@ fmt.Println("OK6")
 1.如果return是在普通的函数，即表示跳出函数，后面代码不执行
 
 2.如果return是在main函数，表示终止main函数，也就是终止程序
-

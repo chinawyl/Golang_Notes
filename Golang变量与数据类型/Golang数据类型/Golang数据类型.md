@@ -94,6 +94,23 @@ func main(){
 
 ![006](D:\Golang_Notes\Golang变量与数据类型\Golang数据类型\006.png)
 
+6.要修改字符串，需要先将其转换成`[]rune`或`[]byte`，完成后再转换为`string`。无论哪种转换，都会重新分配内存，并复制字节数组
+
+```go
+func changeString() {
+	s1 := "big"
+	// 强制类型转换
+	byteS1 := []byte(s1)
+	byteS1[0] = 'p'
+	fmt.Println(string(byteS1))
+
+	s2 := "白萝卜"
+	runeS2 := []rune(s2)
+	runeS2[0] = '红'
+	fmt.Println(string(runeS2))
+}
+```
+
 七、复数
 
 complex64和complex128
@@ -269,5 +286,22 @@ func main() {
 
 	f1, _ = strconv.ParseFloat(str4, 64)
 	fmt.Printf("f1 type %T f1=%v\n", f1, f1)
+}
+```
+
+十、实例:编写代码统计出字符串`"hello沙河小王子"`中汉字的数量
+
+```go
+func main() {
+	str := "hello沙河小王子"
+	temp := []rune(str)
+	var count int
+	for _, v := range temp {
+		if v > 256 {
+			count++
+			fmt.Println(string(v))
+		}
+	}
+	fmt.Println(count)
 }
 ```
