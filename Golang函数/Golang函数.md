@@ -121,6 +121,37 @@ end ...
 */
 ```
 
+练习题
+
+```go
+//defer注册要延迟执行的函数时该函数所有的参数都需要确定其值
+package main
+
+import (
+	"fmt"
+)
+
+func calc(index string, a, b int) int {
+	ret := a + b
+	fmt.Println(index, a, b, ret)
+	return ret
+}
+
+func main() {
+	x := 1
+	y := 2
+	defer calc("AA", x, calc("A", x, y))
+	x = 10
+	defer calc("BB", x, calc("B", x, y))
+	y = 20
+}
+
+//A 1 2 3
+//B 10 2 12
+//BB 10 12 22
+//AA 1 3 4
+```
+
 Go语言中的`defer`语句会将其后面跟随的语句进行延迟处理。在`defer`归属的函数即将返回时，将延迟处理的语句按`defer`定义的逆序进行执行，也就是说，先被`defer`的语句最后被执行，最后被`defer`的语句，最先被执行
 
 二、变量作用域
@@ -152,7 +183,7 @@ func main() {
 
 注:for循环的i也是局部变量
 
-三、函数作为参数
+三、函数作为参数或返回值
 
 ```go
 package main
@@ -161,6 +192,7 @@ import (
 	"fmt"
 )
 
+//函数作为参数
 func add(x, y int) int {
 	return x + y
 }
@@ -173,11 +205,27 @@ func cal(x, y int, op func(int, int) int) int {
 	return op(x, y)
 }
 
+//函数作为返回值
+func do(s string) (func(int, int) int, error) {
+	switch s {
+	case "+":
+		return add, nil
+	case "-":
+		return sub, nil
+	default:
+		err := errors.New("无法识别的操作符")
+		return nil, err
+	}
+}
+
 func main() {
 	r1 := cal(100, 200, add)
 	fmt.Println(r1)
 	r2 := cal(100, 200, sub)
 	fmt.Println(r2)
+    
+    r3 := do("s")
+    fmt.Println(r3)
 }
 ```
 
@@ -314,35 +362,3 @@ func main() {
 
 1. `recover()`必须搭配`defer`使用。
 2. `defer`一定要在可能引发`panic`的语句之前定义。
-
-六、包的使用
-
-![003](003.png)
-
-![004](004.png)
-
-![005](005.png)
-
-注:
-
-1.方法名要大写，小写为私有，挎包使用要大写，否则无法调用(变量也要大写)
-
-2.文件名和包名最好一致
-
-![006](006.png)
-
-![007](007.png)
-
-![008](008.png)
-
-3.引入包时不需要带src，因为环境变量$GOPATH已经配置了，编译器自动在src下开始
-
-4.包名如果过长，可以取别名，但原来包名就不能用来访问变量和方法
-
-![009](009.png)
-
-![010](010.png)
-
-5.在同一文件和包下不能有相同函数
-
-6.要编译生成可执行文件，必须将一个包命名成main包，即package main(main包只能有一个)，编译后会把其他包打包成后缀为.a的库文件
