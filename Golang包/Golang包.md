@@ -161,8 +161,8 @@ func main() {
 //Hello wyl
 ```
 
-![001](D:\Golang_Notes\Golang包\001.png)
+![001](001.png)
 
 2.init()函数执行顺序
 
-![002](D:\Golang_Notes\Golang包\002.png)
+![002](002.png)
