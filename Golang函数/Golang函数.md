@@ -398,7 +398,7 @@ func main() {
 
 4.常用内置函数
 
-![001](D:\Golang_Notes\Golang函数\001.png)
+![001](001.png)
 
 **注意：**
 
@@ -431,7 +431,7 @@ func main() {
 //3
 ```
 
-![002](D:\Golang_Notes\Golang函数\002.png)
+![002](002.png)
 
 注:
 
