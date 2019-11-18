@@ -59,8 +59,15 @@ func calculate4(a int, b ...int) int {
 	return ret
 }
 
-//多返回值函数
-func calculate5(a, b int) (ret1, ret2 int) {
+//多返回值函数写法1
+func calculate5(a, b int) (int, int) {
+    ret1 := a + b
+    ret2 := a - b
+	return ret1, ret2
+}
+
+//多返回值函数写法2
+func calculate6(a, b int) (ret1, ret2 int) {
 	ret1 = a + b
 	ret2 = a - b
 	return
@@ -88,9 +95,13 @@ func main() {
 	ret4 := calculate4(10, 20, 30)      //10 [20 30]
 	fmt.Println(ret1, ret2, ret3, ret4) //0 10 30 60
 
-	//调用多返回值函数
-	x, y := calculate5(100, 200)
+	//调用多返回值函数写法2
+	x, y := calculate6(100, 200)
 	fmt.Println(x, y)
+    
+    //多返回值函数只返回一个值
+    _, res := calculate6(100, 200)
+    fmt.Println(res)
 }
 ```
 
@@ -153,6 +164,37 @@ func main() {
 ```
 
 Go语言中的`defer`语句会将其后面跟随的语句进行延迟处理。在`defer`归属的函数即将返回时，将延迟处理的语句按`defer`定义的逆序进行执行，也就是说，先被`defer`的语句最后被执行，最后被`defer`的语句，最先被执行
+
+4.函数注意事项
+
+1).数组和基本数据类型都是值传递，即值拷贝，在函数内修改，不会影响原本的值
+
+2).如果希望值传递类型的变量能够通过函数修改值，可以用指针
+
+3).golang不支持函数重载
+
+4).golang可以把函数赋值给变量，变量就是函数类型变量，且可以通过该变量直接调用
+
+5).golang交换两个变量值
+
+```go
+package main
+
+import "fmt"
+
+func swap(n1 *int, n2 *int) {
+	t := *n1
+	*n1 = *n2
+	*n2 = t
+}
+
+func main() {
+	a := 10
+	b := 20
+	swap(&a, &b)
+	fmt.Printf("a=%v, b=%v", a, b)
+}
+```
 
 二、变量作用域
 
@@ -356,9 +398,98 @@ func main() {
 
 4.常用内置函数
 
-![001](D:\Golang_Notes\Golang函数与包\001.png)
+![001](D:\Golang_Notes\Golang函数\001.png)
 
 **注意：**
 
 1. `recover()`必须搭配`defer`使用。
 2. `defer`一定要在可能引发`panic`的语句之前定义。
+
+六、递归调用
+
+1.递归基本案例
+
+```go
+package main
+
+import "fmt"
+
+func test(n int) {
+	if n > 2 {
+		n--
+		test(n)
+	}
+	fmt.Println(n)
+}
+
+func main() {
+	test(4)
+}
+
+//2
+//2
+//3
+```
+
+![002](D:\Golang_Notes\Golang函数\002.png)
+
+注:
+
+1).执行一个函数就创建一个新函数栈
+
+2).当一个函数执行完毕或者return时自身就会销毁，栈的空间也会解放出来
+
+2.斐波拉契数列
+
+```go
+package main
+
+import "fmt"
+
+func fblq(n int) int {
+	if n == 1 || n == 2 {
+		return 1
+	} else if n >2 {
+		return fblq(n-1) + fblq(n-2)
+	} else {
+		return 0
+	}
+}
+
+func main() {
+	var n int
+	fmt.Scanln(&n)
+	result := fblq(n)
+	fmt.Println(result)
+}
+```
+
+3.猴子吃桃
+
+```go
+package main
+
+import "fmt"
+
+func eatPeaches(n int) int {
+	if n == 10 {
+		return 1
+	} else if n > 0 && n < 10 {
+		return (eatPeaches(n + 1) + 1) * 2
+	} else {
+		fmt.Println("输入天数有误")
+		return 0
+	}
+}
+
+func main() {
+	res := eatPeaches(1)
+	fmt.Println(res)
+}
+```
+
+七、init函数
+
+1.先初始化全局变量，再执行init函数，再执行main函数
+
+2.调用时可以进行初始化
