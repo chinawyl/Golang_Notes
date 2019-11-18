@@ -366,3 +366,263 @@ func main() {
 }
 ```
 
+四、结构体嵌套
+
+1.结构体的匿名字段
+
+```go
+package main
+
+import "fmt"
+
+type Person struct {
+	string
+	int
+}
+
+func main() {
+	p := Person{
+		string : "wyl",
+		int : 18,
+	}
+	fmt.Printf("%v\n", p)
+	fmt.Println(p.int, p.string)
+}
+```
+
+2.嵌套结构体
+
+```go
+package main
+
+import "fmt"
+
+type Address struct {
+	Province string
+	City string
+}
+
+type Person struct {
+	Name string
+	Gender string
+	Age int
+	Address Address
+}
+
+func main() {
+	p1 := Person{
+		Name:    "wyl",
+		Gender:  "男",
+		Age:     18,
+		Address: Address{
+			Province: "重庆",
+			City: "渝北",
+		},
+	}
+	fmt.Printf("%#v\n", p1)
+	fmt.Println(p1.Name, p1.Gender, p1.Age, p1.Address)
+}
+```
+
+3.嵌套匿名结构体
+
+```go
+package main
+
+import "fmt"
+
+type Address struct {
+	Province string
+	City string
+}
+
+type Person struct {
+	Name string
+	Gender string
+	Age int
+	Address //匿名结构体
+}
+
+func main() {
+	p1 := Person{
+		Name:    "wyl",
+		Gender:  "男",
+		Age:     18,
+		Address: Address{
+			Province: "重庆",
+			City: "渝北",
+		},
+	}
+	fmt.Println(p1.Address.Province) //通过匿名结构体字段访问其内部的字段
+	fmt.Println(p1.Province)		 //直接访问匿名结构体字段
+}
+```
+
+4.嵌套结构体字段名冲突
+
+```go
+package main
+
+import "fmt"
+
+type Address struct {
+	Province string
+	City string
+	UpdateTime string
+}
+
+type Email struct {
+	Addr string
+	UpdateTime string
+}
+
+type Person struct {
+	Name string
+	Gender string
+	Age int
+	Address //匿名结构体
+	Email
+}
+
+func main() {
+	p1 := Person{
+		Name:    "wyl",
+		Gender:  "男",
+		Age:     18,
+		Address: Address{
+			Province: "重庆",
+			City: "渝北",
+			UpdateTime: "2019.11.11",
+		},
+		Email: Email{
+			Addr:       "1972488730@qq.com",
+			UpdateTime: "2019.11.18",
+		},
+	}
+	//fmt.Println(p1.UpdateTime) //嵌套结构体不能包含多个同名字段
+	fmt.Println(p1.Address.UpdateTime)
+	fmt.Println(p1.Email.UpdateTime)
+}
+```
+
+5.结构体继承
+
+```go
+package main
+
+import "fmt"
+
+//Animal 动物
+type Animal struct {
+	name string
+}
+
+func (a *Animal) move() {
+	fmt.Printf("%s会动！\n", a.name)
+}
+
+//Dog 狗
+type Dog struct {
+	Feet    int8
+	*Animal //通过嵌套匿名结构体实现继承
+}
+
+func (d *Dog) wang() {
+	fmt.Printf("%s会汪汪汪~\n", d.name)
+}
+
+func main()  {
+	d1 := &Dog{
+		Feet: 4,
+		Animal: &Animal{ //注意嵌套的是结构体指针
+			name: "黎顺利",
+		},
+	}
+	d1.wang() //乐乐会汪汪汪~
+	d1.move() //乐乐会动！
+}
+```
+
+五、结构体与JSON序列化
+
+1.实例
+
+```go
+//Student 学生
+type Student struct {
+	ID     int
+	Gender string
+	Name   string
+}
+
+//Class 班级
+type Class struct {
+	Title    string
+	Students []*Student
+}
+
+func main() {
+	c := &Class{
+		Title:    "101",
+		Students: make([]*Student, 0, 200),
+	}
+	for i := 0; i < 10; i++ {
+		stu := &Student{
+			Name:   fmt.Sprintf("stu%02d", i),
+			Gender: "男",
+			ID:     i,
+		}
+		c.Students = append(c.Students, stu)
+	}
+	//JSON序列化：结构体-->JSON格式的字符串
+	data, err := json.Marshal(c)
+	if err != nil {
+		fmt.Println("json marshal failed")
+		return
+	}
+	fmt.Printf("json:%s\n", data)
+	//JSON反序列化：JSON格式的字符串-->结构体
+	str := `{"Title":"101","Students":[{"ID":0,"Gender":"男","Name":"stu00"},{"ID":1,"Gender":"男","Name":"stu01"},{"ID":2,"Gender":"男","Name":"stu02"},{"ID":3,"Gender":"男","Name":"stu03"},{"ID":4,"Gender":"男","Name":"stu04"},{"ID":5,"Gender":"男","Name":"stu05"},{"ID":6,"Gender":"男","Name":"stu06"},{"ID":7,"Gender":"男","Name":"stu07"},{"ID":8,"Gender":"男","Name":"stu08"},{"ID":9,"Gender":"男","Name":"stu09"}]}`
+	c1 := &Class{}
+	err = json.Unmarshal([]byte(str), c1)
+	if err != nil {
+		fmt.Println("json unmarshal failed!")
+		return
+	}
+	fmt.Printf("%#v\n", c1)
+}
+```
+
+2.结构体标签（Tag）
+
+`Tag`是结构体的元信息，可以在运行的时候通过反射的机制读取出来。 `Tag`在结构体字段的后方定义，由一对反引号包裹起来，具体的格式如下：
+
+```go
+`key1:"value1" key2:"value2"`
+```
+
+结构体标签由一个或多个键值对组成。键与值使用冒号分隔，值用双引号括起来。键值对之间使用一个空格分隔。 **注意事项：** 为结构体编写`Tag`时，必须严格遵守键值对的规则。结构体标签的解析代码的容错能力很差，一旦格式写错，编译和运行时都不会提示任何错误，通过反射也无法正确取值。例如不要在key和value之间添加空格。
+
+```go
+//Student 学生
+type Student struct {
+	ID     int    `json:"id"` //通过指定tag实现json序列化该字段时的key
+	Gender string //json序列化是默认使用字段名作为key
+	name   string //私有不能被json包访问
+}
+
+func main() {
+	s1 := Student{
+		ID:     1,
+		Gender: "男",
+		name:   "沙河娜扎",
+	}
+	data, err := json.Marshal(s1)
+	if err != nil {
+		fmt.Println("json marshal failed!")
+		return
+	}
+	fmt.Printf("json str:%s\n", data) //json str:{"id":1,"Gender":"男"}
+}
+```
+
