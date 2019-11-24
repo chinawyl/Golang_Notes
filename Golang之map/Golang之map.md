@@ -10,6 +10,8 @@ map初始化
 make(map[KeyType]ValueType, [cap]) //cap表示map的容量，该参数虽然不是必须的，但最好声明清楚
 ```
 
+注:map只声明是不会分配内存的
+
 2.举例
 
 ```go
@@ -34,15 +36,29 @@ func main() {
 	fmt.Println(a)
 	fmt.Printf("type of a:%T\n", a)
     
+    //声明的同时make
+    var c = make(map[int]string)
+    c[1] = "aaa"
+    c[2] = "bbb"
+    c[3] = "ccc"
+    
     //声明的同时初始化
 	b := map[int]bool{
 		1: true,
-		2: false,
+		2: false, //不要忘记,
 	}
 	fmt.Printf("b:%#v\n", b)
 	fmt.Printf("type:%T", b)
 }
 ```
+
+注:
+
+1).map的key不能重复，key重复会以最后的key-value存储
+
+2).map存储时为无序
+
+3).map增加key-value时如果达到容量，可以继续添加，不会发生panic错误
 
 二、判断键是否存在
 
@@ -176,6 +192,35 @@ func main() {
 }
 ```
 
+注:如果想要动态增加map切片可以使用append函数
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var message = make([]map[string]string, 2)
+	message[0] = make(map[string]string, 3)
+	message[0]["name"] = "wyl"
+	message[0]["age"] = "18"
+	message[0]["address"] = "重庆"
+
+	message[1] = make(map[string]string, 3)
+	message[1]["name"] = "sxb"
+	message[1]["age"] = "22"
+	message[1]["address"] = "四川"
+	fmt.Println(message)
+	newmessage := map[string]string{
+		"name" : "ty",
+		"age" : "22",
+		"address" : "上海",
+	}
+	message = append(message, newmessage)
+	fmt.Println(message)
+}
+```
+
 五、值为切片类型的map
 
 ```go
@@ -200,7 +245,42 @@ func main() {
 }
 ```
 
-六、练习:统计一个字符串中每个单词出现的次数，比如：”how do you do”中how=1 do=2 you=1
+六、map的增删改查
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	city := make(map[int]string, 10)
+	city[1] = "重庆"
+	city[2] = "上海"
+	city[3] = "成都"
+
+	//增加
+	city[4] = "东京"
+
+	//修改
+	city[3] = "北京"
+
+	//删除
+	delete(city, 1) //即使键不存在也不会报错
+
+	//map清空
+	city = make(map[int]string) //重新make一个新空间，原来的map当做垃圾回收
+
+	//查询
+	val, ok := city[1]
+	if ok {
+		fmt.Printf("有1这个key，值为%v", val)
+	} else {
+		fmt.Printf("没有1这个key，值不存在")
+	}
+}
+```
+
+七、练习:统计一个字符串中每个单词出现的次数，比如：”how do you do”中how=1 do=2 you=1
 
 ```go
 package main
