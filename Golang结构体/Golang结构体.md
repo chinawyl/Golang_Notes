@@ -72,7 +72,7 @@ func main() {
 }
 ```
 
-2.指针类型结构体
+2.引用类型结构体
 
 ```go
 package main
@@ -80,6 +80,20 @@ package main
 import (
 	"fmt"
 )
+package main
+
+type test struct {
+	ptr *int
+	slices []int
+	maps map[string]string
+}
+
+func main() {
+	var t test
+	t.ptr = new(int)
+	t.slices = make([]int, 5, 5)
+	t.maps = make(map[string]string)
+}
 
 type person struct {
 	name string
@@ -89,18 +103,16 @@ type person struct {
 
 func main() {
 	//创建指针类型结构体
-	var p2 = new(person)
+    var p2 = new(person) //等价于p2 := new(person)
 	fmt.Printf("%T\n", p2)     //*main.person
 	fmt.Printf("p2=%#v\n", p2) //p2=&main.person{name:"", city:"", age:0}
-
-	//指针类结构体实例化
 	p2.name = "wyl"
 	p2.age = 18
 	p2.city = "重庆"
 	fmt.Printf("p2=%#v\n", p2) //p2=&main.person{name:"wyl", city:"重庆", age:18}
 
 	//取结构体的地址实例化
-	p3 := &person{}
+    var p3 = &person{} //等价于p3 := &person{},且可以直接赋值
 	fmt.Printf("%T\n", p3)     //*main.person
 	fmt.Printf("p3=%#v\n", p3) //p3=&main.person{name:"", city:"", age:0}
 	p3.name = "七米"
@@ -223,6 +235,38 @@ func newPerson(name, city string, age int8) *person {
 func main() {
 	p9 := newPerson("张三", "重庆", 90)
 	fmt.Printf("%#v\n", p9) //&main.person{name:"张三", city:"重庆", age:90}
+}
+```
+
+7.结构体注意事项
+
+1).结构体与其他结构体进行转换时需要有完全相同的字段(名字，个数，类型)
+
+2).结构体重新定义相当于取别名
+
+3).结构体加上tag在使用json时用于序列化和反序列化
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+)
+
+type Monster struct {
+	Name string `json: "name"`
+	Age int `json: age`
+	Skill string `json: skill`
+}
+
+func main() {
+	monster := Monster{"牛魔王", 18, "狼牙棒"}
+	jsonStr, err := json.Marshal(monster)
+	if err != nil {
+		fmt.Println("json处理错误", err)
+	}
+	fmt.Println("jsonStr =", string(jsonStr))
 }
 ```
 

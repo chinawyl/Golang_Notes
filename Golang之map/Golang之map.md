@@ -155,7 +155,7 @@ func main() {
 	}
 	//取出map中的所有key存入切片keys
 	var keys = make([]string, 0, 200)
-	for key := range scoreMap {
+	for key,_ := range scoreMap {
 		keys = append(keys, key)
 	}
 	//对切片进行排序
