@@ -319,6 +319,7 @@ func (p Person) Dream() {
 func main() {
 	p1 := NewPerson("wyl", 25)
 	p1.Dream()
+    //Dream() //不能直接调用
 }
 ```
 
