@@ -208,3 +208,116 @@ func main() {
 6.结构体允许嵌套基本数据类型，比如int，但不允许有多个int
 
 7.多重继承就是嵌套了多个结构体
+
+四、多态
+
+Golang中多态是通过接口来实现的
+
+1.多态参数
+
+```go
+//usb接口既可以接受手机变量又可以接受相机变量
+package main
+
+import "fmt"
+
+//Usb接口
+type Usb interface {
+	Start()
+	Stop()
+}
+
+//手机
+type Phone struct {}
+
+func (p *Phone) Start() {
+	fmt.Println("手机开始工作")
+}
+
+func (p *Phone) Stop() {
+	fmt.Println("手机停止工作")
+}
+
+//相机
+type Crema struct {}
+
+func (c *Crema) Start() {
+	fmt.Println("相机开始工作")
+}
+
+func (c *Crema) Stop() {
+	fmt.Println("相机停止工作")
+}
+
+//计算机
+type Computer struct {}
+
+func (c *Computer) working(usb Usb) {
+	usb.Start()
+	usb.Stop()
+}
+
+func main() {
+	computer := Computer{}
+	phone := Phone{}
+	crema := Crema{}
+
+	computer.working(&phone)
+	computer.working(&crema)
+}
+```
+
+2.多态数组
+
+```go
+//定义一个usbArry接口数组，可以存放不同类型的变量即Phone和Crema的结构体变量
+package main
+
+import "fmt"
+
+//Usb接口
+type Usb interface {
+	Start()
+	Stop()
+}
+
+//手机
+type Phone struct {}
+
+func (p *Phone) Start() {
+	fmt.Println("手机开始工作")
+}
+
+func (p *Phone) Stop() {
+	fmt.Println("手机停止工作")
+}
+
+//相机
+type Crema struct {}
+
+func (c *Crema) Start() {
+	fmt.Println("相机开始工作")
+}
+
+func (c *Crema) Stop() {
+	fmt.Println("相机停止工作")
+}
+
+//计算机
+type Computer struct {}
+
+func (c *Computer) working(usb Usb) {
+	usb.Start()
+	usb.Stop()
+}
+
+func main() {
+	var usbArry [3]Usb
+	usbArry[0] = &Phone{}
+	usbArry[1] = &Phone{}
+	usbArry[2] = &Crema{}
+
+	fmt.Println(usbArry)
+}
+```
+

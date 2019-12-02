@@ -67,6 +67,38 @@ func main() {
 }
 ```
 
+注意事项:
+
+1.Golang接口中没有不能包含任何变量
+
+2.Golang的接口不需要显式实现，只要一个变量含有接口中所有的方法，那么这个变量就实现这个接口，所有Golang中没有implement关键字，且Golang中实现接口与接口名字无关
+
+3.只要是自定义数据类型，就可以实现接口，而不仅仅是结构体类型
+
+```go
+package main
+
+import "fmt"
+
+type Number interface {
+	show()
+}
+
+type ints int
+
+func (i ints) show() {
+	fmt.Println("i =", i)
+}
+
+func main() {
+	var i ints = 10
+	var N Number = i
+	N.show()
+}
+```
+
+4.接口是引用类型
+
 二、值接收者和指针接收者实现接口的区别
 
 值接受者接口:
@@ -302,6 +334,31 @@ func main() {
 }
 ```
 
+注:接口嵌套时嵌套的接口中不能有相同的方法
+
+```go
+package main
+
+type A interface {
+	test1()
+	test2()
+}
+
+type B interface {
+	test1()
+	test3()
+}
+
+type C interface {
+	A
+	B
+}
+
+func main() {
+	
+}
+```
+
 四、空接口
 
 1.空接口类型的变量可以存储任意类型的变量
@@ -387,3 +444,105 @@ func justifyType(x interface{}) {
 }
 ```
 
+五、接口实现对切片排序
+
+```go
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"sort"
+)
+
+type Hero struct {
+	Name string
+	Age int
+}
+
+type HeroSlice []Hero
+
+func(hs HeroSlice) Len() int{
+	return len(hs)
+}
+
+func (hs HeroSlice) Less(i, j int) bool {
+	return hs[i].Age < hs[j].Age
+}
+
+func (hs HeroSlice) Swap(i, j int) {
+	temp := hs[i].Age
+	hs[i].Age = hs[j].Age
+	hs[j].Age = temp
+    //hs[i], hs[j] = hs[j], hs[i]等价于上面三行代码
+
+}
+
+func main() {
+	var heros HeroSlice
+	for i := 0; i < 10; i++ {
+		hero := Hero{
+			Name: fmt.Sprintf("英雄:%d", rand.Intn(100)),
+			Age:  rand.Intn(100),
+		}
+		heros = append(heros, hero)
+	}
+	fmt.Println("---------------排序前---------------")
+	for _, v := range heros {
+		fmt.Println(v)
+	}
+	fmt.Println("---------------排序后---------------")
+	sort.Sort(heros)
+	for _, v := range heros {
+		fmt.Println(v)
+	}
+}
+```
+
+六、接口是继承的一种补充
+
+```go
+package main
+
+import "fmt"
+
+type Flying interface {
+	fly()
+}
+
+type Monkey struct {
+	Name string
+	Age int
+}
+
+func (m *Monkey) ClimbTree() {
+	fmt.Println(m.Name, "会爬树")
+}
+
+type LittleMonkey struct {
+	Monkey
+}
+
+func (lm *LittleMonkey) fly() {
+	fmt.Println(lm.Name, "会飞翔")
+}
+
+func main() {
+	Monkey1 := LittleMonkey{Monkey{
+		Name: "悟空",
+		Age:  6,
+	}}
+	Monkey1.ClimbTree()
+	Monkey1.fly()
+}
+```
+
+注:
+
+1.继承的价值:解决代码的复用性和可维护性
+
+2.接口的价值:设计好各种规范(方法)，让其自定义去实现这些方法
+
+3.接口比继承更灵活
+
+4.接口在一定程度上能让代码解耦
