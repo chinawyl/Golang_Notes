@@ -412,7 +412,7 @@ x.(T)
 
 该语法返回两个参数，第一个参数是`x`转化为`T`类型后的变量，第二个值是一个布尔值，若为`true`则表示断言成功，为`false`则表示断言失败。
 
-实例:
+实例1:
 
 ```go
 func main() {
@@ -424,6 +424,72 @@ func main() {
 	} else {
 		fmt.Println("类型断言失败")
 	}
+}
+```
+
+实例2:
+
+```go
+package main
+
+import "fmt"
+
+//Usb接口
+type Usb interface {
+	Start()
+	Stop()
+}
+
+//手机
+type Phone struct {}
+
+func (p Phone) Start() {
+	fmt.Println("手机开始工作")
+}
+
+func (p Phone) Stop() {
+	fmt.Println("手机停止工作")
+}
+
+func (p Phone) Call() {
+	fmt.Println("手机打电话")
+}
+
+//相机
+type Crema struct {}
+
+func (c Crema) Start() {
+	fmt.Println("相机开始工作")
+}
+
+func (c Crema) Stop() {
+	fmt.Println("相机停止工作")
+}
+
+//计算机
+type Computer struct {}
+
+func (c Computer) working(usb Usb) {
+	usb.Start()
+	if phone, ok := usb.(Phone); ok == true {
+		phone.Call()
+	}
+	usb.Stop()
+}
+
+func main() {
+	var computer Computer
+	var usbArry [3]Usb
+	usbArry[0] = Phone{}
+	usbArry[1] = Phone{}
+	usbArry[2] = Crema{}
+
+	for _, v := range usbArry {
+		computer.working(v)
+		fmt.Println()
+	}
+	
+	fmt.Println(usbArry)
 }
 ```
 
